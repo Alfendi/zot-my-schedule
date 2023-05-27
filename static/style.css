@@ -1,4 +1,208 @@
-body {
-  font-family: "helvetica", sans-serif;
-  text-align: center;
+@font-face {
+    font-family: semibold;
+    src: url(Surt-Extended-Semibold-TRIAL.otf);
 }
+
+@font-face {
+    font-family: Vogue;
+    src: url(Vogue.ttf);
+}
+
+@keyframes introTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    background-image: url("images/backgrounddd.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    zoom: 0.85;
+    padding-top: 50px;
+    /* padding-bottom: 200px; */
+    background-color: rgb(224, 216, 206);
+  }
+
+  h1 {
+    font-family: "Vogue";
+    text-align: center;
+    color: 	#493a2b;
+    margin-left: 20px;
+  }
+
+  h2 {
+    font-family: "semibold";
+    text-align: center;
+    color: 	#000000;
+    margin-left: 14px;
+  }
+
+  p {
+    font-family: "semibold";
+    font-size: 20px;
+  }
+
+  a {
+    font-family: "Vogue";
+    font-size: 28px;
+    color: #493a2b;
+    text-decoration: none;
+    transition: font-size 1s ease;
+  }
+
+  a:hover {
+    color: #b98148;
+    font-size: 32px;
+    transition: font-size 0.6s ease;
+  }
+
+  .image-container {
+    width: 380px;
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .image {
+    transition: transform 0.3s ease;
+  }
+
+  .image:hover {
+    transform: scale(1.2);
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.menu {
+    animation: introTransition 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .left {
+    margin-right: 380px;
+  }
+
+.right {
+    margin-left: 380px;
+  }
+
+.parent-container {
+    animation: introTransition 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    transition: transform 0.4s ease;
+}
+
+.parent-container:hover {
+  transform: scale(1.1);
+}
+
+.flex-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 700px;
+    background-color: rgb(216, 206, 194);
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+.flex-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 700px;
+    background-color: rgb(212, 178, 167);
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.flex-inner1 {
+    display: flex;
+    width: 450px;
+    height: 550px;
+    background-color: rgb(190, 183, 168);
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.flex-inner2 {
+    display: flex;
+    width: 850px;
+    height: 650px;
+    background-color: rgb(205, 197, 179);
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+form.searchbox input[type=text] {
+    align-items: center;
+    padding: 10px;
+    font-size: 17px;
+    border: 2px solid grey;
+    float: left;
+    width: 80%;
+    background: #ece9e9;
+    margin-bottom: 20px;
+  }
+
+form.searchbox button {
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+form.searchbox button:hover {
+    background-color: #6d6966;
+    transform: scale(1.2);
+  }
+
+  .arrow-button img {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .dog-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+
+  .dog-container img {
+    position: absolute;
+    width: 300px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+  }
+
+  .dog-container img:hover {
+    transform: scale(1.1);
+  }

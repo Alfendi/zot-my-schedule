@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ebee2f4-9714-40a1-98d3-a8f82d5649f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/static/images/Surt-Extended-Semibold-TRIAL.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/Vogue.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/antdude.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/babyant.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/backgrounddd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/dogdude.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/leman.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/zotlogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +47,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test2",
+    "git-widget-placeholder": "alfendi",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -47,6 +58,11 @@
         <option name="myModuleName" value="zotmyschedule" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">

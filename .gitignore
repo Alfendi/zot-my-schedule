@@ -166,5 +166,5 @@ instance/*
 .webassets-cache
 .env
 
-!/config.py
-!/app.yaml
+config.py
+app.yaml
