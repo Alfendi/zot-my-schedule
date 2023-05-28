@@ -114,21 +114,41 @@
         </div>
 
         <script>
+          var courseArray = []; // Declare an empty array to store the course data
+
           function add() {
             let courseInput = document.getElementById('courseSearchBar').value;
             let profInput = document.getElementById('profSearchBar').value;
             document.getElementById('inputs').innerHTML += `<li>${courseInput + profInput}<span onclick="rem(this)">X</span></li>`;
             document.getElementById('courseSearchBar').value = "";
             document.getElementById('profSearchBar').value = "";
+            courseArray.push(courseInput + ",\t" + profInput);
           }
 
           function rem(element) {
             element.parentElement.remove();
+            var courseIndex = courseArray.indexOf(element.parentElement.textContent);
+            if (courseIndex > -1) {
+              courseArray.splice(courseIndex, 1); // Remove the corresponding value from the courseArray
+            }
+          }
+
+          function submitForm() {
+            console.log("Submitting form")
+            for (var i = 0; i < courseArray.length; i++) {
+              var userInput = courseArray[i];
+              document.getElementById('inputs2').innerHTML += `<button class="collapsible">${userInput}</button>
+                                                                <div class="content">
+                                                                  <p>hello</p>
+                                                                  <p>hello</p>
+                                                                  <p>hello</p>
+                                                                </div>`;
+            }
           }
         </script>
 
         <div class="submitButtonDiv">
-          <button type="submit" style="text-align: center; padding-inline: 15px; padding-block: 10px; border-radius: 15px">
+          <button type="submit " style="text-align: center; padding-inline: 15px; padding-block: 10px; border-radius: 15px" onclick="submitForm()">
             <p>Submit</p>
           </button>
         </div>
@@ -137,8 +157,24 @@
     <div class="flex-container2">
       <div class="flex-inner2">
         <ul id="inputs2">
-          <p>Courses</p>
+          <p>Courses:</p>
         </ul>
+        <script>
+          var coll = document.getElementsByClassName("collapsible");
+          var i;
+
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+              } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+              }
+            });
+          }
+        </script>
       </div>
     </div>
   </div>
