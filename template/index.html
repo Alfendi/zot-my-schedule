@@ -114,13 +114,16 @@
         </div>
 
         <script>
-          
+          function clearContent(){
+            document.getElementById('inputs2').innerHTML = "<p>Courses:</p>";
+          }
         </script>
 
         <div class="submitButtonDiv">
           <button type="submit " style="text-align: center; padding-inline: 15px; padding-block: 10px; border-radius: 15px" onclick="submitForm()">
             <p>Submit</p>
           </button>
+          <button onclick="clearContent()">Reset Website</button>
         </div>
       </div>
     </div>

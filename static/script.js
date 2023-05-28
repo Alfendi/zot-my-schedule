@@ -130,7 +130,9 @@ function submitForm() {
                                                         <p>hello</p>
                                                         <p>hello</p>
                                                       </div>`;
+    document.getElementById('inputs').innerHTML = "";
   }
+  courseArray = ''
   var coll = document.getElementsByClassName("collapsible");
   var i;
 
