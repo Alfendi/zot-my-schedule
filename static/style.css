@@ -205,14 +205,13 @@ a:hover {
   justify-content: center;
   /* align-items: center; */
   width: 850px;
-  height: 650px;
+  height: 450px;
   background-color: rgb(205, 197, 179);
   justify-content: left;
   align-items: left;
   outline: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   margin-block: 20px;
-  overflow-y: auto;
 }
 
 .flex-inner3 {
@@ -220,6 +219,19 @@ a:hover {
   flex-direction: column;
   width: 850px;
   height: 200px;
+  background-color: rgb(205, 197, 179);
+  justify-content: center;
+  align-items: center;
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-block: 20px;
+}
+
+.flex-inner4 {
+  display: flex;
+  flex-direction: column;
+  width: 850px;
+  height: 400px;
   background-color: rgb(205, 197, 179);
   justify-content: center;
   align-items: center;
@@ -238,9 +250,11 @@ a:hover {
   padding-left: 0px;
 }
 
-/* #inputs2 {
+#inputs2 {
+  width: 100%;
+  max-height: 230px;
   overflow-y:auto
-} */
+}
 
 ul {
   list-style: none;
@@ -445,4 +459,25 @@ form.searchbox button:hover {
   margin: 20px;
   justify-content: center;
   align-items: center;
+}
+
+.suggestionsClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.suggestionButton {
+  text-align: center;
+  margin: 20px; 
+  padding-inline: 60px; 
+  padding-block: 10px; 
+  border-radius: 15px;
+  /* text-align: center; 
+  margin: 20px; 
+  padding-inline: 60px; 
+  padding-block: 10px; 
+  border-radius: 15px; */
 }
