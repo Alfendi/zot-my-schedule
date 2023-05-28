@@ -481,3 +481,10 @@ form.searchbox button:hover {
   padding-block: 10px; 
   border-radius: 15px; */
 }
+
+#deleteButton {
+  text-align: center;
+  margin: 5px; 
+  padding-inline: 20px; 
+  border-radius: 10px;
+}

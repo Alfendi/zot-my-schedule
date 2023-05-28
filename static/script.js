@@ -115,8 +115,11 @@ function autocomplete(inp, arr) {
 function add() {
   let courseInput = document.getElementById('courseSearchBar').value;
   let profInput = document.getElementById('profSearchBar').value;
-  document.getElementById('inputs').innerHTML += `<li class="scheduleInput">
-                                                    ${"Course: " + courseInput + "<br>" + "Professor: " + profInput}<span onclick="rem(this)">X</span>
+  document.getElementById('inputs').innerHTML += `<li style:"display: flex; flex-direction: row;">
+                                                      <div>
+                                                        ${"Course: " + courseInput + "<br>" + "Professor: " + profInput}
+                                                      </div>
+                                                      <button id="deleteButton" onclick="rem(this)">&#x2715</button>
                                                   </li>`;
   document.getElementById('courseSearchBar').value = "";
   document.getElementById('profSearchBar').value = "";
@@ -124,11 +127,14 @@ function add() {
 }
 
 function rem(element) {
+  console.log("Before: " + courseArray);
   element.parentElement.remove();
   var courseIndex = courseArray.indexOf(element.parentElement.textContent);
   if (courseIndex > -1) {
     courseArray.splice(courseIndex, 1); // Remove the corresponding value from the courseArray
   }
+
+  console.log("After: " + courseArray);
 }
 
 function submitForm() {
@@ -172,5 +178,25 @@ function getStars(zot_score) {
   while (count < 5) {
     document.getElementById('zotstars').innerHTML += `<img src="../static/images/empty-zot-star.png" alt="anteater clip art" class="stars">`;
     count++;
+  }
+}
+
+function showDifficultySuggestions() {
+  var x = document.getElementById("altProfToggle").innerText;
+  console.log(x);
+  if (x === "Show alternative Professors") {
+    console.log("TOGGLE");
+    document.getElementById("altProfToggle").innerText = "Swapped text!";
+  } else {
+    document.getElementById("altProfToggle").innerText = "Show alternative Professors";
+  }
+}
+
+function showQualitySuggestions() {
+  var x = document.getElementById("altCourseToggle").innerText;
+  if (x === "show alternative Courses") {
+    document.getElementById("altCourseToggle").innerText = "Swapped text!";
+  } else {
+    document.getElementById("altCourseToggle").innerText = "show alternative Courses";
   }
 }

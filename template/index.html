@@ -170,12 +170,12 @@
         <div style="display: flex;">
           <div class="suggestionsClass">
             <p style="text-align: center;">
-              <b>Hardest Class:</b>
+              <span style="font-weight: bold;">Hardest Class:</span>
               <br>
               ICS 46
             </p>
-            <button class="suggestionButton">
-              <p style="margin-bottom: 0px;">
+            <button class="suggestionButton" onclick="showDifficultySuggestions()">
+              <p id="altProfToggle" style="margin-bottom: 0px;">
                 Show alternative Professors
               </p>
             </button>
@@ -186,8 +186,8 @@
               <br>
               Michael Shindler
             </p>
-            <button class="suggestionButton">
-              <p style="margin-bottom: 0px;">
+            <button class="suggestionButton" onclick="showQualitySuggestions()">
+              <p id="altCourseToggle" style="margin-bottom: 0px;">
                 Show alternative Courses
               </p>
             </button>
@@ -196,7 +196,15 @@
       </div>
     </div>
   </div>
-  <p class='credit'>ADD CREDITS HERE</p>
+  <div class="credit">
+    <h3>Developers</h3>
+    <p style="color:lightcoral;">
+      David Xiu <br>
+      Sahil Somani <br>
+      Tenzo Chang <br>
+      Brandon Tran
+    </p>
+  </div>
   <div class="dog-container">
     <img src="static/images/dogdude.png" alt="Your Image" width="500" height="500">
   </div>
