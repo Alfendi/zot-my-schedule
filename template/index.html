@@ -115,22 +115,35 @@
 
         <script>
           function clearContent(){
-            document.getElementById('inputs2').innerHTML = "<p>Courses:</p>";
+            document.getElementById('inputs2').innerHTML = "";
           }
         </script>
 
         <div class="submitButtonDiv">
-          <button type="submit " style="text-align: center; padding-inline: 15px; padding-block: 10px; border-radius: 15px" onclick="submitForm()">
+          <button type="submit " style="text-align: center; margin: 20px; padding-inline: 15px; padding-block: 10px; border-radius: 15px" onclick="submitForm()">
             <p>Submit</p>
           </button>
-          <button onclick="clearContent()">Reset Website</button>
+          <button style="text-align: center; margin: 20px; padding-inline: 15px; padding-block: 10px; border-radius: 15px" onclick="clearContent()">
+            <p>Reset Calendar</p>
+          </button>
         </div>
       </div>
     </div>
     <div class="flex-container2">
+      <div class="flex-inner3">
+        <h2 style="padding-bottom: 20px";>ZOT Score</h2>
+        <div id="zotstars">
+          <!-- <img src="../static/images/zot-star.png" alt="anteater clip art" class="stars">
+          <img src="../static/images/zot-star.png" alt="anteater clip art" class="stars">
+          <img src="../static/images/zot-star.png" alt="anteater clip art" class="stars">
+          <img src="../static/images/empty-zot-star.png" alt="border of anteater clip art" class="stars">
+          <img src="../static/images/empty-zot-star.png" alt="border of anteater clip art" class="stars"> -->
+        </div>
+      </div>
+      <script src="../static/script.js"></script>
       <div class="flex-inner2">
+        <h2 style="padding: 10px;">Courses</h2>
         <ul id="inputs2">
-          <p>Courses:</p>
         </ul>
         <script>
           var coll = document.getElementsByClassName("collapsible");
@@ -144,7 +157,8 @@
                 content.style.maxHeight = null;
               } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-              } 
+              }
+              
             });
           }
           </script>

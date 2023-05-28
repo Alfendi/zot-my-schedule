@@ -1,12 +1,24 @@
 // ********* VARIABLE INITIALIZATION & FUNCTION CALLS *********
-var courses = ["ICS 46", "ICS 45C", "COMPSCI 161", "COMPSCI 117", "COMPSCI 117"];
-var professors = ["Michael Shindler", "Richard Pattis", "Alex Thornton"];
+var professors = ['STAFF', 'IMANI, M', 'EPPSTEIN, D', 'GARETT, R', 'KLEFSTAD, R', 'SHINDLER, M', 'XIE, X', 'MININ, V', 'BIC, L', 'AHMED, I', 'ALFARO, S', 'NAVARRO, E', 'YOUNG, N', 'IHLER, A', 'VAN DER HOEK, A', 'OCHI, D', 'WONG-MA, J', 'CHEN, Q', 'BALDWIN, M', 'JARECKI, S', 'SQUIRE, K', 'IBRAHIM, M', 'KASK, K', 'MJOLSNESS, E', 'HARRIS, I', 'DILLENCOURT, M', 'STEINKUEHLER, C', 'SALEN, K', 'BIETZ, M', 'FEDOROVA, M', 'JONES, J', 'CROOKS, R', 'JORDAN, S', 'GAGO MASAGUE, S', 'KRONE MARTINS, A', 'THORNTON, A', 'BERG, A', 'MAJUMDER, A', 'GASSKO, I', 'ZIV, H', 'DENENBERG, D'];
+var courses = ['COMPSCI 175', 'MATH 5B', 'IN4MATX 122A', 'I&C SCI 60', 'COMPSCI 161', 'COMPSCI 112', 'I&C SCI 90', 'I&C SCI 6D', 'I&C SCI 117', 'IN4MATX 175', 'I&C SCI 169', 'MATH 113A', 'I&C SCI 53', 'IN4MATX 122B', 'COMPSCI 171', 'I&C SCI 80', 'I&C SCI 51', 'MATH 134B', 'COMPSCI 151', 'IN4MATX 161', 'MATH 2D', 'COMPSCI 143A', 'I&C SCI 193', 'MATH 132', 'COMPSCI 164', 'MATH 2A', 'COMPSCI 141', 'COMPSCI 134', 'I&C SCI 32', 'MATH 5A', 'I&C SCI 112', 'MATH 175', 'COMPSCI 147', 'MATH 3D', 'MATH 140A', 'I&C SCI 5', 'I&C SCI 141', 'COMPSCI 122B', 'MATH 2B', 'MATH 150', 'MATH 2E', 'MATH 1B', 'MATH 117', 'MATH 147', 'COMPSCI 132', 'I&C SCI 45J', 'I&C SCI 45C', 'MATH 143A', 'I&C SCI 175', 'I&C SCI 122A', 'MATH 164', 'I&C SCI 31', 'COMPSCI 169', 'I&C SCI 143A', 'IN4MATX 134', 'I&C SCI 169A', 'IN4MATX 141', 'IN4MATX 164', 'IN4MATX 117', 'MATH 105A', 'I&C SCI 121', 'I&C SCI 139W', 'MATH 120A', 'I&C SCI 46', 'MATH 169', 'I&C SCI 132', 'IN4MATX H81', 'IN4MATX 169', 'IN4MATX 178', 'MATH 161', 'MATH 10', 'I&C SCI 3', 'MATH 112A', 'I&C SCI 164', 'I&C SCI 122B', 'I&C SCI 178', 'IN4MATX 43', 'I&C SCI 151', 'MATH 171', 'I&C SCI 32A', 'I&C SCI 171', 'IN4MATX 115', 'MATH 3A', 'I&C SCI 33', 'MATH 122B', 'MATH 9', 'IN4MATX 101', 'MATH 134', 'IN4MATX 143A', 'IN4MATX 131', 'MATH 1A', 'MATH 121B', 'I&C SCI 161', 'MATH 121A', 'MATH 134A', 'I&C SCI 134', 'I&C SCI 6B', 'IN4MATX 147', 'MATH 112', 'IN4MATX 151', 'MATH 130A', 'COMPSCI 122A', 'MATH 121', 'IN4MATX 121', 'IN4MATX 112', 'I&C SCI 147', 'MATH 140B', 'MATH 151', 'IN4MATX 132', 'COMPSCI 178', 'MATH 141', 'MATH 122A', 'IN4MATX 171', 'MATH 178', 'MATH 13', 'IN4MATX 133', 'IN4MATX 191A', 'COMPSCI 117', 'I&C SCI H197', 'MATH 192', 'I&C SCI 9', 'COMPSCI 121'];
 var courseArray = []; // Declare an empty array to store the course data
+var zot_score = 2;  // Zot Score
+var dropdown_text = [
+                        ["Title", "Description1"],
+                        ["Title2", "Description2"],
+                        ["Title3", "Description3"]
+                      ]
 
 autocomplete(document.getElementById("courseSearchBar"), courses);
 autocomplete(document.getElementById("profSearchBar"), professors);
 
+getStars(zot_score);
+
 // ******** FUNCTION DECLARATIONS ********
+function setZot_Score(score) {
+  zot_score = score;
+}
+
 function show() {
   document.getElementById('sidebar').classList.toggle('active');
 }
@@ -106,10 +118,12 @@ function autocomplete(inp, arr) {
 function add() {
   let courseInput = document.getElementById('courseSearchBar').value;
   let profInput = document.getElementById('profSearchBar').value;
-  document.getElementById('inputs').innerHTML += `<li>${courseInput + profInput}<span onclick="rem(this)">X</span></li>`;
+  document.getElementById('inputs').innerHTML += `<li class="scheduleInput">
+                                                    ${"Course: " + courseInput + "<br>" + "Professor: " + profInput}<span onclick="rem(this)">X</span>
+                                                  </li>`;
   document.getElementById('courseSearchBar').value = "";
   document.getElementById('profSearchBar').value = "";
-  courseArray.push(courseInput + ",\t" + profInput);
+  courseArray.push(courseInput + ", " + profInput);
 }
 
 function rem(element) {
@@ -121,18 +135,16 @@ function rem(element) {
 }
 
 function submitForm() {
-  console.log("Submitting form")
+  document.getElementById('inputs2').innerHTML = "";
   for (var i = 0; i < courseArray.length; i++) {
     var userInput = courseArray[i];
-    document.getElementById('inputs2').innerHTML += `<button class="collapsible">${userInput}</button>
+    document.getElementById('inputs2').innerHTML += `<button class="collapsible" "> ${userInput}</button>
                                                       <div class="content">
-                                                        <p>hello</p>
-                                                        <p>hello</p>
                                                         <p>hello</p>
                                                       </div>`;
     document.getElementById('inputs').innerHTML = "";
   }
-  courseArray = ''
+  courseArray = [];
   var coll = document.getElementsByClassName("collapsible");
   var i;
 
@@ -147,5 +159,19 @@ function submitForm() {
         content.style.maxHeight = content.scrollHeight + "px";
       }
     });
+  }
+}
+
+function getStars(zot_score) {
+  var count = 0;
+
+  while (count < zot_score) {
+    document.getElementById('zotstars').innerHTML += `<img src="../static/images/zot-star.png" alt="anteater clip art" class="stars">`;
+    count++;
+  }
+
+  while (count < 5) {
+    document.getElementById('zotstars').innerHTML += `<img src="../static/images/empty-zot-star.png" alt="anteater clip art" class="stars">`;
+    count++;
   }
 }

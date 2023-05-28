@@ -86,6 +86,18 @@ a:hover {
   background-color: rgb(165, 142, 142);
 }
 
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
 .content {
   padding: 0 18px;
   width: 800px;
@@ -93,6 +105,7 @@ a:hover {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
+  margin-bottom: 15px;
 }
 
 .content p{
@@ -156,16 +169,21 @@ a:hover {
   height: 1000px;
   background-color: rgb(216, 206, 194);
   outline: 2px solid rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .flex-container2 {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 900px;
   height: 1000px;
   background-color: rgb(212, 178, 167);
   outline: 2px solid rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .flex-inner1 {
@@ -177,16 +195,45 @@ a:hover {
   justify-content: left;
   align-items: left;
   outline: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
 }
 
 .flex-inner2 {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
   width: 850px;
-  height: 850px;
+  height: 650px;
   background-color: rgb(205, 197, 179);
   justify-content: left;
   align-items: left;
   outline: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-block: 20px;
+}
+
+.flex-inner3 {
+  display: flex;
+  flex-direction: column;
+  width: 850px;
+  height: 200px;
+  background-color: rgb(205, 197, 179);
+  justify-content: center;
+  align-items: center;
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-block: 20px;
+}
+
+.stars {
+  width: 60px;
+  height: 60px;
+  margin-inline: 7px;
+}
+
+#inputs {
+  padding-left: 0px;
 }
 
 ul {
@@ -195,6 +242,14 @@ ul {
 }
 
 ul li {
+  background-color: #d4d4d4;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 10px;
+}
+/* 
+ul li {
+  background-color: #e9e9e9;
   width: 100%;
   height: 40px;
   line-height: 40px;
@@ -202,8 +257,8 @@ ul li {
   position: relative;
   cursor: pointer;
   display: block;
-  margin: 5px 0;
-}
+  margin: 5px 5px;
+} */
 
 ul li span {
   position: absolute;
@@ -211,7 +266,7 @@ ul li span {
   right: 0;
   width: 50px;
   text-align: center;
-}
+} 
 
 .autocomplete {
   position: relative;
@@ -235,6 +290,7 @@ ul li span {
   background: #ece9e9;
   margin-bottom: 20px;
   margin-right: 20px;
+  border-radius: 10px;
 }
 
 .searchbox button {
@@ -375,5 +431,8 @@ form.searchbox button:hover {
 }
 
 .submitButtonDiv {
+  display: flex;
   margin: 20px;
+  justify-content: center;
+  align-items: center;
 }
