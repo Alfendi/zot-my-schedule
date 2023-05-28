@@ -37,12 +37,12 @@ def get_cached():
         return test
 
 
-def insert_cached():
+def insert_cached(professor_first, professor_last, department, course, quality, difficulty, summary):
     insert_stmt = sqlalchemy.text(
-        "INSERT INTO cachedcourses (professor_first, professor_last, course_first, course_last, quality, difficulty, "
+        "INSERT INTO cachedcourses (professor_first, professor_last, department, course, quality, difficulty, "
         "summary) "
-        "VALUES (:professor_first, :professor_last, :course_first, :course_last, :quality, :difficulty, :summary)",
+        "VALUES (:professor_first, :professor_last, :department, :course, :quality, :difficulty, :summary)",
     )
     with pool.connect() as db_conn:
-        db_conn.execute(insert_stmt, parameters={"professor_first": "Matt", "professor_last": "Bietz", "course_first": "ICS", "course_last": "51", "quality": 2, "difficulty": 2, "summary": "Health and happiness."})
+        db_conn.execute(insert_stmt, parameters={"professor_first": professor_first, "professor_last": professor_last, "department": department, "course": course, "quality": quality, "difficulty": difficulty, "summary": summary})
         db_conn.commit()
