@@ -12,7 +12,6 @@
 # below:
 .git
 .gitignore
-config.py
 
 # Python pycache:
 __pycache__/
