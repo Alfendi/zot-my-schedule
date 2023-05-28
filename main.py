@@ -20,10 +20,12 @@ def submitted():
             return "Failed to read data!"
         else:
             data = json.loads(data)
-            score, data_list = driver.run(data)
+            score, data_list, max_diff, low_qual = driver.run(data)
             response_data = {
                 'zot_score': score,
-                'dropdown_text': data_list
+                'dropdown_text': data_list,
+                'max_diff': max_diff,
+                'low_qual': low_qual
             }
             return jsonify(response_data)
 

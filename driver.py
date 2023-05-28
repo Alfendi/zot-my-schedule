@@ -28,7 +28,10 @@ def run(raw_course_input):
         body = course.review_summary
         data_list.append([head,body])
 
-    return score, data_list
+    max_diff = max(schedule.courses, key=lambda course: course.difficulty).formatted()
+    low_qual = min(schedule.courses, key=lambda course: course.quality).formatted()
+
+    return score, data_list, max_diff, low_qual
 
 
 def maxDiffAlt(course_str):

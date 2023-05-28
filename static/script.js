@@ -143,6 +143,10 @@ function submitForm() {
         console.log(response)
         var zot_score = response.zot_score;
         var dropdown_text = response.dropdown_text;
+        var max_diff = response.max_diff;
+        var low_qual = response.low_qual;
+
+
         getStars(zot_score);
 
           document.getElementById('inputs2').innerHTML = "";
@@ -154,7 +158,12 @@ function submitForm() {
                                                               <div class="content">
                                                                 <p>${dropdown_description}</p>
                                                               </div>`;
-            document.getElementById('inputs').innerHTML = "";
+
+            document.getElementById('max_diff').innerHTML = max_diff;
+            document.getElementById('low_qual').innerHTML = low_qual;
+
+
+        document.getElementById('max_diff');
         }
       courseArray = [];
       var coll = document.getElementsByClassName("collapsible");
@@ -231,4 +240,5 @@ function sendFlask(courseArray) {
     });
   });
 }
+
 

@@ -12,7 +12,7 @@ class RMPCourse:
     def __init__(self, professor, course, school='UC Irvine', summary = True):
 
         for row in db.get_cached():
-            print(row)
+            # print(row)
             if row[1].strip().lower() == professor.split()[-1].strip().lower() and \
                row[3].strip().lower() == course.split()[-1].strip().lower():
                 self.professor = row[0] + ' ' + row[1]
