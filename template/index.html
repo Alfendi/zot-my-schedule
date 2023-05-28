@@ -114,37 +114,7 @@
         </div>
 
         <script>
-          var courseArray = []; // Declare an empty array to store the course data
-
-          function add() {
-            let courseInput = document.getElementById('courseSearchBar').value;
-            let profInput = document.getElementById('profSearchBar').value;
-            document.getElementById('inputs').innerHTML += `<li>${courseInput + profInput}<span onclick="rem(this)">X</span></li>`;
-            document.getElementById('courseSearchBar').value = "";
-            document.getElementById('profSearchBar').value = "";
-            courseArray.push(courseInput + ",\t" + profInput);
-          }
-
-          function rem(element) {
-            element.parentElement.remove();
-            var courseIndex = courseArray.indexOf(element.parentElement.textContent);
-            if (courseIndex > -1) {
-              courseArray.splice(courseIndex, 1); // Remove the corresponding value from the courseArray
-            }
-          }
-
-          function submitForm() {
-            console.log("Submitting form")
-            for (var i = 0; i < courseArray.length; i++) {
-              var userInput = courseArray[i];
-              document.getElementById('inputs2').innerHTML += `<button class="collapsible">${userInput}</button>
-                                                                <div class="content">
-                                                                  <p>hello</p>
-                                                                  <p>hello</p>
-                                                                  <p>hello</p>
-                                                                </div>`;
-            }
-          }
+          
         </script>
 
         <div class="submitButtonDiv">

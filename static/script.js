@@ -1,3 +1,12 @@
+// ********* VARIABLE INITIALIZATION & FUNCTION CALLS *********
+var courses = ["ICS 46", "ICS 45C", "COMPSCI 161", "COMPSCI 117", "COMPSCI 117"];
+var professors = ["Michael Shindler", "Richard Pattis", "Alex Thornton"];
+var courseArray = []; // Declare an empty array to store the course data
+
+autocomplete(document.getElementById("courseSearchBar"), courses);
+autocomplete(document.getElementById("profSearchBar"), professors);
+
+// ******** FUNCTION DECLARATIONS ********
 function show() {
   document.getElementById('sidebar').classList.toggle('active');
 }
@@ -93,8 +102,33 @@ function autocomplete(inp, arr) {
   });
 }
 
-var courses = ["ICS 46", "ICS 45C", "COMPSCI 161", "COMPSCI 117", "COMPSCI 117"];
-var professors = ["Michael Shindler", "Richard Pattis", "Alex Thornton"];
 
-autocomplete(document.getElementById("courseSearchBar"), courses);
-autocomplete(document.getElementById("profSearchBar"), professors);
+function add() {
+  let courseInput = document.getElementById('courseSearchBar').value;
+  let profInput = document.getElementById('profSearchBar').value;
+  document.getElementById('inputs').innerHTML += `<li>${courseInput + profInput}<span onclick="rem(this)">X</span></li>`;
+  document.getElementById('courseSearchBar').value = "";
+  document.getElementById('profSearchBar').value = "";
+  courseArray.push(courseInput + ",\t" + profInput);
+}
+
+function rem(element) {
+  element.parentElement.remove();
+  var courseIndex = courseArray.indexOf(element.parentElement.textContent);
+  if (courseIndex > -1) {
+    courseArray.splice(courseIndex, 1); // Remove the corresponding value from the courseArray
+  }
+}
+
+function submitForm() {
+  console.log("Submitting form")
+  for (var i = 0; i < courseArray.length; i++) {
+    var userInput = courseArray[i];
+    document.getElementById('inputs2').innerHTML += `<button class="collapsible">${userInput}</button>
+                                                      <div class="content">
+                                                        <p>hello</p>
+                                                        <p>hello</p>
+                                                        <p>hello</p>
+                                                      </div>`;
+  }
+}
