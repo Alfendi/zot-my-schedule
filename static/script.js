@@ -6,6 +6,15 @@ var zot_score = 2;  // Zot Score
 var dropdown_text = [
                       ["Title", "Description1"],
                       ["Title2", "Description2"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
+                      ["Title3", "Description3"],
                       ["Title3", "Description3"]
                     ]
 
@@ -13,6 +22,7 @@ autocomplete(document.getElementById("courseSearchBar"), courses);
 autocomplete(document.getElementById("profSearchBar"), professors);
 
 getStars(zot_score);
+
 
 // ******** FUNCTION DECLARATIONS ********
 function setZot_Score(score) {
@@ -139,7 +149,7 @@ function submitForm() {
   for (var i = 0; i < dropdown_text.length; i++) {
     var dropdown_title = dropdown_text[i][0];
     var dropdown_description = dropdown_text[i][1];
-    
+
     document.getElementById('inputs2').innerHTML += `<button class="collapsible" "> ${dropdown_title}</button>
                                                       <div class="content">
                                                         <p>${dropdown_description}</p>
