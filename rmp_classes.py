@@ -1,16 +1,8 @@
-import base64
-import re
-import requests
 import openai
 import torch
 import db
-from torch import tensor
-import xgboost
 
 from statistics import mean
-import ratemyprofessor as rmp
-from ratemyprofessor.school import School
-from ratemyprofessor.professor import Professor
 import rmp_helpers
 
 from config import openai_demo_key
@@ -47,7 +39,7 @@ class RMPCourse:
         # to_cache = (self.professor.split()[:-1], self.professor.split()[-1], self.department,
         #                  self.course, self.quality, self.difficulty, self.review_summary)
 
-        db.insert_cached(self.professor.split()[:-1], self.professor.split()[-1], self.department,
+        db.insert_cached(' '.join(self.professor.split()[:-1]), self.professor.split()[-1], self.department,
                          self.course, self.quality, self.difficulty, self.review_summary)
 
     def formatted(self):

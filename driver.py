@@ -2,32 +2,40 @@ import rmp_classes
 import xgboost
 import re
 import requests
-from rmp_classes import Schedule, RMPCourse
+from rmp_classes import RMPCourse
 
-def run(raw_course_input = None):
-    # Get courses from frontend
-    # Format: list of dicts:  [ {'professor':prof1, 'course':course1},
-    #                           {'professor':prof2, 'course':course2} ]
-    raw_courses = [{'professor': 'Michael Shindler', 'course': 'COMPSCI 161'},
-                   {'professor': 'Charless Fowlkes', 'course': 'COMPSCI 116'},
-                   {'professor': 'Jennifer Wong-Ma', 'course': 'I&C SCI 51'}]
+
+def run(raw_course_input):
+    print(raw_course_input)
+    raw_courses = []
+    for line in raw_course_input:
+        s = line.replace(',', '').split()
+        p = ' '.join([w.strip() for w in s[-2:]])
+        c = ' '.join([w.strip() for w in s[:-2]])
+        raw_courses.append({'professor': p, 'course': c})
 
     # Convert courses to Schedule Object
     schedule = rmp_classes.Schedule(raw_courses)
 
-    # Get model's rating 
+    # Get model's rating
     model = xgboost.XGBClassifier()
-    model.load_model('/home/alfendi/PycharmProjects/zotmyschedule/rmp/model.json')
+    model.load_model('./model.json')
     score = schedule.model_prediction(model)
-    
-    # Output individual ratings, joint rating, alternatives, rmp summary
-    print('Overall Score:' + str(score))
+
+    data_list = []
     for course in schedule.courses:
-        print(f'{course.department} {course.course} with {course.professor}: Q={course.quality}, D={course.difficulty}')
-        print('Summary:\n', course.review_summary, '\n')
+        head = f'{course.department} {course.course} with {course.professor}: Quality = {round(course.quality,2)}, Difficulty = {round(course.difficulty,2)}'
+        body = course.review_summary
+        data_list.append([head,body])
+
+    return score, data_list
 
 
-def maxDiffAlt(course = None):
+def maxDiffAlt(course_str):
+    pattern = r'^([\w\s]+)\swith\s((?:\w+\s){2})'
+    match = re.match(pattern, course_str)
+    course = RMPCourse(course=match.group(1).strip(),professor=match.group(2).strip())
+
     max_diff_val = course.difficulty 
     division = 'Upper' if len(re.sub(r"\D", "", course.course)) > 2 else 'Lower'
     high_course = ''.join([char for char in str(course.course) if not char.isalpha()])
@@ -40,7 +48,7 @@ def maxDiffAlt(course = None):
 
     response = requests.get(url).json() 
 
-    default = None
+    out = None
     for possible_course in reversed(response['schools'][0]['departments'][0]['courses']):
         num = possible_course['courseNumber']
         for sec in possible_course['sections']:
@@ -52,12 +60,17 @@ def maxDiffAlt(course = None):
                 print(e)
             print(rmp_course.difficulty)
             if rmp_course.difficulty < max_diff_val:
-                return f'Replacment: {course.department} {num} with {rmp_course.professor}'
-            if default == None: 
-                default = f'Replacment: {course.department} {num} with {rmp_course.professor}'
-    return default
+                out = rmp_course
+            if out == None: 
+                out = rmp_course
+    
+    return f'Consider {out.formatted()} as an easier alternative.'
 
-def minQualAlt(course = None):
+def minQualAlt(course_str):
+    pattern = r'^([\w\s]+)\swith\s((?:\w+\s){2})'
+    match = re.match(pattern, course_str)
+    course = RMPCourse(course=match.group(1).strip(),professor=match.group(2).strip())
+
     min_qual_val = course.quality 
     division = 'Upper' if len(re.sub(r"\D", "", course.course)) > 2 else 'Lower'
     high_course = ''.join([char for char in str(course.course) if not char.isalpha()])
@@ -70,7 +83,7 @@ def minQualAlt(course = None):
 
     response = requests.get(url).json() 
 
-    default = None
+    out = None
     for possible_course in reversed(response['schools'][0]['departments'][0]['courses']):
         num = possible_course['courseNumber']
         for sec in possible_course['sections']:
@@ -82,22 +95,8 @@ def minQualAlt(course = None):
                 print(e)
             print(rmp_course.quality)
             if rmp_course.quality > min_qual_val:
-                return f'Replacment: {course.department} {num} with {rmp_course.professor}'
-            if default == None: 
-                default = f'Replacment: {course.department} {num} with {rmp_course.professor}'
-    return default 
+                out = rmp_course
+            if out == None: 
+                out = rmp_course
 
-
-def alternatives(schedule = None):
-    max_diff = max(schedule.courses, key = lambda course : course.difficulty)
-    low_qual = min(schedule.courses, key = lambda course : course.quality)
-
-    diff_alt = maxDiffAlt(max_diff)
-    qual_alt = minQualAlt(low_qual)
-
-    return f'{max_diff.formatted()} is your hardest course. Consider {diff_alt.formatted()} as an easier alternative.\n' + \
-           f'{low_qual.formatted()} has your lowest quality professor. Consider {qual_alt.formatted()} as an better alternative.\n'
-
-
-
-run()
+    return f'Consider {out.formatted()} as a better alternative.'

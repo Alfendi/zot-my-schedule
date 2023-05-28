@@ -168,3 +168,4 @@ instance/*
 
 config.py
 app.yaml
+credentials.json
