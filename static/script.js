@@ -4,10 +4,10 @@ var courses = ['COMPSCI 175', 'MATH 5B', 'IN4MATX 122A', 'I&C SCI 60', 'COMPSCI 
 var courseArray = []; // Declare an empty array to store the course data
 var zot_score = 2;  // Zot Score
 var dropdown_text = [
-                        ["Title", "Description1"],
-                        ["Title2", "Description2"],
-                        ["Title3", "Description3"]
-                      ]
+                      ["Title", "Description1"],
+                      ["Title2", "Description2"],
+                      ["Title3", "Description3"]
+                    ]
 
 autocomplete(document.getElementById("courseSearchBar"), courses);
 autocomplete(document.getElementById("profSearchBar"), professors);
@@ -136,11 +136,13 @@ function rem(element) {
 
 function submitForm() {
   document.getElementById('inputs2').innerHTML = "";
-  for (var i = 0; i < courseArray.length; i++) {
-    var userInput = courseArray[i];
-    document.getElementById('inputs2').innerHTML += `<button class="collapsible" "> ${userInput}</button>
+  for (var i = 0; i < dropdown_text.length; i++) {
+    var dropdown_title = dropdown_text[i][0];
+    var dropdown_description = dropdown_text[i][1];
+    
+    document.getElementById('inputs2').innerHTML += `<button class="collapsible" "> ${dropdown_title}</button>
                                                       <div class="content">
-                                                        <p>hello</p>
+                                                        <p>${dropdown_description}</p>
                                                       </div>`;
     document.getElementById('inputs').innerHTML = "";
   }
